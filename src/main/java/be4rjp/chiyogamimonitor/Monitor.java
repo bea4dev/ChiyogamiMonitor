@@ -9,6 +9,7 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import world.chiyogami.chiyogamilib.monitor.PerformanceMonitor;
+import world.chiyogami.chiyogamilib.monitor.WorkMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,9 @@ public class Monitor extends BukkitRunnable {
     
             lines.add(name + ": " + new ProgressBar(8).setProgress(Math.min((time / 1000000.0) / 50.0, 1.0)) + " " + String.format("%.1f", time / 1000000.0) + "ms");
         }
+        
+        lines.add(" ");
+        lines.add("MULTI_THREAD_TICK:" + (WorkMode.MULTI_THREAD_TICK ? "§a true" : "§c false"));
         
         ObjectiveUtil.setLine(objective, lines);
     }

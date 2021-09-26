@@ -6,7 +6,7 @@
 
     <groupId>be4rjp</groupId>
     <artifactId>chiyogamimonitor</artifactId>
-    <version>v1.0.0</version>
+    <version>v1.0.1</version>
     <packaging>jar</packaging>
 
     <name>ChiyogamiMonitor</name>
@@ -77,7 +77,7 @@
         <dependency>
             <groupId>com.github.Be4rJP</groupId>
             <artifactId>ChiyogamiLib</artifactId>
-            <version>6694a80cb2</version>
+            <version>5ede268fa8</version>
         </dependency>
     </dependencies>
 </project>

@@ -8,9 +8,15 @@ public final class ChiyogamiMonitor extends JavaPlugin {
     
     public static Monitor monitor;
     
+    private static ChiyogamiMonitor plugin;
+    
     @Override
     public void onEnable() {
         // Plugin startup logic
+        plugin = this;
+    
+        Config.load();
+        
         monitor = new Monitor();
         monitor.runTaskTimerAsynchronously(this, 0, 20);
         
@@ -21,4 +27,6 @@ public final class ChiyogamiMonitor extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
+    
+    public static ChiyogamiMonitor getPlugin() {return plugin;}
 }
