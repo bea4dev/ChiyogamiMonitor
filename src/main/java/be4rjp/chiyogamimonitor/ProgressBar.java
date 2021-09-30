@@ -93,4 +93,20 @@ public class ProgressBar {
             return toString(ChatColor.RED.toString());
         }
     }
+    
+    /**
+     * 文字列として出力します
+     * バーの色を進捗率によって赤、黄、緑に変化させます
+     *
+     * @return String
+     */
+    public String toStringColorReversed() {
+        if (percent < 33.3) {
+            return toString(ChatColor.RED.toString());
+        } else if (percent < 66.6) {
+            return toString(ChatColor.YELLOW.toString());
+        } else {
+            return toString(ChatColor.GREEN.toString());
+        }
+    }
 }

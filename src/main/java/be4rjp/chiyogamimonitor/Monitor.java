@@ -36,6 +36,12 @@ public class Monitor extends BukkitRunnable {
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
     
         List<String> lines = new ArrayList<>();
+    
+        lines.add("");
+        
+        double tps = ((double)Math.round(ChiyogamiMonitor.getTpsMonitor().getTPS() * 10.0)) / 10.0;
+        lines.add("TPS: " + new ProgressBar(15).setProgress(Math.min(tps / 20.0, 1.0)).toStringColorReversed() + " " + String.format("%.1f", tps));
+        lines.add(" ");
         
         long fullTime = PerformanceMonitor.getFullServerTickNanoTime();
         lines.add("FULL_TICK: " + new ProgressBar(8).setProgress(Math.min((fullTime / 1000000.0) / 50.0, 1.0)) + " " + String.format("%.1f", fullTime / 1000000.0) + "ms");
@@ -43,7 +49,7 @@ public class Monitor extends BukkitRunnable {
         long worldTime = PerformanceMonitor.getAllWorldTickNanoTime();
         lines.add("WORLD_TICK: " + new ProgressBar(8).setProgress(Math.min((worldTime / 1000000.0) / 50.0, 1.0)) + " " + String.format("%.1f", worldTime / 1000000.0) + "ms");
         
-        lines.add("");
+        lines.add("  ");
         
         for(Map.Entry<World, Long> entry : PerformanceMonitor.getWorldTickNanoTimeMap().entrySet()){
             World world = entry.getKey();
@@ -54,7 +60,7 @@ public class Monitor extends BukkitRunnable {
             lines.add(name + ": " + new ProgressBar(8).setProgress(Math.min((time / 1000000.0) / 50.0, 1.0)) + " " + String.format("%.1f", time / 1000000.0) + "ms");
         }
         
-        lines.add(" ");
+        lines.add("   ");
         lines.add("MULTI_THREAD_TICK:" + (WorkMode.MULTI_THREAD_TICK ? "§a true" : "§c false"));
         
         ObjectiveUtil.setLine(objective, lines);

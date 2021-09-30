@@ -10,12 +10,17 @@ public final class ChiyogamiMonitor extends JavaPlugin {
     
     private static ChiyogamiMonitor plugin;
     
+    private static TPSMonitor tpsMonitor;
+    
     @Override
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
     
         Config.load();
+        
+        tpsMonitor = new TPSMonitor();
+        tpsMonitor.start(this);
         
         monitor = new Monitor();
         monitor.runTaskTimerAsynchronously(this, 0, 20);
@@ -29,4 +34,6 @@ public final class ChiyogamiMonitor extends JavaPlugin {
     }
     
     public static ChiyogamiMonitor getPlugin() {return plugin;}
+    
+    public static TPSMonitor getTpsMonitor() {return tpsMonitor;}
 }
