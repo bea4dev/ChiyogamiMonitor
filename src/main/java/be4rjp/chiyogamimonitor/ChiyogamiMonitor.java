@@ -16,8 +16,6 @@ public final class ChiyogamiMonitor extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
-    
-        Config.load();
         
         tpsMonitor = new TPSMonitor();
         tpsMonitor.start(this);
