@@ -1,4 +1,5 @@
 package be4rjp.chiyogamimonitor;
+
 import org.bukkit.ChatColor;
 
 /**
@@ -7,12 +8,12 @@ import org.bukkit.ChatColor;
  * [|||||||||||||||]
  */
 public class ProgressBar {
-    
+
     //プログレスバーの長さ
     private final int maxLength;
     //進捗率(%)
     private double percent = 0;
-    
+
     /**
      * プログレスバーの長さ
      *
@@ -21,14 +22,14 @@ public class ProgressBar {
     public ProgressBar(int maxLength) {
         this.maxLength = maxLength;
     }
-    
+
     private int getProgressValue() {
         double rate = percent / 100.0;
         int value = (int) ((double) maxLength * rate);
         return rate > 0 && value < 1 ? 1 : value;
     }
-    
-    
+
+
     /**
      * 進捗率(%)を設定します
      *
@@ -39,8 +40,8 @@ public class ProgressBar {
         this.percent = percent;
         return this;
     }
-    
-    
+
+
     /**
      * 進捗率を設定します
      *
@@ -50,8 +51,8 @@ public class ProgressBar {
     public ProgressBar setProgress(double rate) {
         return setProgressPercent(rate * 100);
     }
-    
-    
+
+
     /**
      * 文字列として出力します
      *
@@ -60,7 +61,7 @@ public class ProgressBar {
      */
     public String toString(String barColor) {
         int value = getProgressValue();
-        
+
         String m = "|";
         StringBuilder ms = new StringBuilder();
         ms.append("§r§7[");
@@ -76,8 +77,8 @@ public class ProgressBar {
         ms.append("]§r");
         return ms.toString();
     }
-    
-    
+
+
     /**
      * 文字列として出力します
      * バーの色を進捗率によって赤、黄、緑に変化させます
@@ -93,7 +94,7 @@ public class ProgressBar {
             return toString(ChatColor.RED.toString());
         }
     }
-    
+
     /**
      * 文字列として出力します
      * バーの色を進捗率によって赤、黄、緑に変化させます
