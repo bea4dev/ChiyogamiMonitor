@@ -46,9 +46,6 @@ public class Monitor extends BukkitRunnable {
         long fullTime = PerformanceMonitor.getFullServerTickNanoTime();
         lines.add("FULL_TICK: " + new ProgressBar(8).setProgress(Math.min((fullTime / 1000000.0) / 50.0, 1.0)) + " " + String.format("%.1f", fullTime / 1000000.0) + "ms");
 
-        long worldTime = PerformanceMonitor.getAllWorldTickNanoTime();
-        lines.add("WORLD_TICK: " + new ProgressBar(8).setProgress(Math.min((worldTime / 1000000.0) / 50.0, 1.0)) + " " + String.format("%.1f", worldTime / 1000000.0) + "ms");
-
         lines.add("  ");
 
         for (Map.Entry<String, Long> entry : PerformanceMonitor.getWorldTickNanoTimeMap().entrySet()) {
@@ -59,9 +56,6 @@ public class Monitor extends BukkitRunnable {
 
             lines.add(name + ": " + new ProgressBar(8).setProgress(Math.min((time / 1000000.0) / 50.0, 1.0)) + " " + String.format("%.1f", time / 1000000.0) + "ms");
         }
-
-        lines.add("   ");
-        lines.add("MULTI_THREAD_TICK:" + (WorkMode.MULTI_THREAD_TICK ? "§a true" : "§c false"));
 
         ObjectiveUtil.setLine(objective, lines);
     }

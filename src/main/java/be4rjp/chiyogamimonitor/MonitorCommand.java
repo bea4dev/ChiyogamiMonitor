@@ -33,11 +33,6 @@ public class MonitorCommand implements CommandExecutor, TabExecutor {
                 ((Player) sender).setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
                 break;
             }
-
-            case "gui": {
-                var player = (Player) sender;
-
-            }
         }
 
         return true;
@@ -51,7 +46,6 @@ public class MonitorCommand implements CommandExecutor, TabExecutor {
         if (args.length == 1) {
             list.add("show");
             list.add("hide");
-            list.add("gui");
 
             return list;
         }
